@@ -8,8 +8,12 @@ const PORT = process.env.PORT || 3000;
 
 app
   .set("view engine", "ejs")
-  .set("views", "__dirname/src/views")
+  .set("views", "./src/views")
+  .use(express.static("public"))
   .use(express.urlencoded({ extended: false }))
+  .get("/", (req, res) => {
+    res.render("index");
+  })
   .use("/users", userRouter)
   .listen(PORT, () => {
     console.log(`Servidor funcionando en http://localshot:${PORT}`);
