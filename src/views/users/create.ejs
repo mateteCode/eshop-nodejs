@@ -15,7 +15,7 @@
     <%- include('../partials/header') %>
     <main class="container">
       <h1>Crear usuario</h1>
-      <form action="/users" method="POST">
+      <form action="/users" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="email" class="form-label">Correo</label>
           <input type="email" class="form-control" id="email" name="email" />
@@ -27,6 +27,16 @@
             class="form-control"
             id="password"
             name="password"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="image">Imagen: </label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            accept="image/*"
           />
         </div>
         <button type="submit" class="btn btn-primary">Crear</button>

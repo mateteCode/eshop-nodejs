@@ -11,7 +11,9 @@ const show = async (req, res) => {
 };
 
 const store = async (req, res) => {
-  res.send(await service.store(req.body));
+  //console.log(req.file);
+  res.send(await service.store(req.body, req.file ? req.file.filename : null));
+  //res.redirect("/users")
 };
 
 const create = (req, res) => {

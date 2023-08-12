@@ -10,8 +10,8 @@ const findOne = async (id) => {
   return "No se encuentra el usuario.";
 };
 
-const store = async (body) => {
-  const result = await model.store(body);
+const store = async (body, file) => {
+  const result = await model.store(body, file);
   if (result.affectedRows > 0) return "Registro creado.";
   return result;
 };

@@ -22,11 +22,12 @@ const findOne = async (id) => {
   }
 };
 
-const store = async ({ email, password }) => {
+const store = async ({ email, password }, image) => {
   try {
     const [rows] = await conn.query("INSERT INTO users SET ?", {
       email,
       password,
+      image,
     });
     return rows;
   } catch (err) {

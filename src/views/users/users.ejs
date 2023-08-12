@@ -25,6 +25,7 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">Correo</th>
+            <th scope="col">Foto</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -33,6 +34,13 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= item.email %></td>
+            <td>
+              <img
+                src="uploads/<%= item.image || 'default.jpg' %>"
+                width="100"
+                alt="Foto de perfil"
+              />
+            </td>
             <td>
               <a
                 class="btn btn-warning btn-sm"
