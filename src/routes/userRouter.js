@@ -3,6 +3,8 @@ const router = express.Router();
 
 const controller = require("../controllers/userController");
 
+const { loginValidations, validateInput } = require("../middlewares/validator");
+
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "public/uploads"),
@@ -14,6 +16,12 @@ router
   .get("/", controller.index)
   .get("/create", controller.create)
   .get("/:id", controller.show)
-  .post("/", uploadFile.single("image"), controller.store);
+  .post(
+    "/",
+    loginValidations,
+    validateInput,
+    uploadFile.single("image"),
+    controller.store
+  );
 
 module.exports = router;
