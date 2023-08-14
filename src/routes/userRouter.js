@@ -18,9 +18,9 @@ router
   .get("/:id", controller.show)
   .post(
     "/",
+    uploadFile.single("image"),
     loginValidations,
     validateInput,
-    uploadFile.single("image"),
     controller.store
   );
 

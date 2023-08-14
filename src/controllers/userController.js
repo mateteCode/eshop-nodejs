@@ -3,7 +3,7 @@ const service = require("../services/userService");
 const index = async (req, res) => {
   //res.send(await service.findAll());
   const users = await service.findAll();
-  res.render("users/users", { users });
+  res.render("users", { users });
 };
 
 const show = async (req, res) => {
@@ -17,7 +17,10 @@ const store = async (req, res) => {
 };
 
 const create = (req, res) => {
-  res.render("users/create");
+  res.render("users/create", /*{
+    value: { email: "" },
+    errors: [],
+  }*/);
 };
 
 module.exports = { index, show, store, create };

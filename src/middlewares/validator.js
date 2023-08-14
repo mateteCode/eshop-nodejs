@@ -19,10 +19,13 @@ const loginValidations = [
 
 const validateInput = (req, res, next) => {
   const errors = validationResult(req);
-  //console.log(errors, !errors.isEmpty());
-
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+    //return res.status(422).json({ errors: errors.array() });
+    console.log(req.body);
+    return res.render("users/create", {
+      value: req.body,
+      errors: errors.array(),
+    });
   }
 
   next();

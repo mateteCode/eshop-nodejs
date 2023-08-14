@@ -1,0 +1,40 @@
+<h1>Usuarios</h1>
+<div class="container">
+  <a class="btn btn-primary btn-sm" href="users/create" role="button">Crear</a>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Foto</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach((item) => { %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.email %></td>
+      <td>
+        <img
+          src="uploads/<%= item.image || 'default.jpg' %>"
+          width="100"
+          alt="Foto de perfil"
+        />
+      </td>
+      <td>
+        <a
+          class="btn btn-warning btn-sm"
+          href="<% `users/edit/${item.id}` %>"
+          role="button"
+          >Editar</a
+        >
+        <a class="btn btn-danger btn-sm" href="#" role="button">Borrar</a>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- contentFor('title') %> Lista de Usuarios
