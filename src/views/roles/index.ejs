@@ -1,0 +1,32 @@
+<h1>Roles</h1>
+<div class="container">
+  <a class="btn btn-primary btn-sm" href="roles/create" role="button">Crear</a>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% roles.forEach((item) => { %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td>
+        <a
+          class="btn btn-warning btn-sm"
+          href="<%= `roles/edit/${item.id}` %>"
+          role="button"
+          >Editar</a
+        >
+        <a class="btn btn-danger btn-sm" href="#" role="button">Borrar</a>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- contentFor('title') %> Lista de Roles

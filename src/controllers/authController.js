@@ -5,6 +5,11 @@ const login = (req, res) => {
   res.render("auth/login", { layout: "layouts/auth" });
 };
 
+const logout = (req, res) => {
+  req.session = null;
+  res.redirect("/");
+};
+
 const postLogin = async (req, res) => {
   const [rows] = await conn.query("SELECT * FROM users WHERE email LIKE ?", [
     req.body.email,
@@ -23,8 +28,10 @@ const postLogin = async (req, res) => {
       layout: "layouts/auth",
     });
   } else {
-    res.send("OK");
+    //res.send("OK");
+    req.session.userId = rows[0].id;
+    res.redirect("/");
   }
 };
 
-module.exports = { login, postLogin };
+module.exports = { login, postLogin, logout };

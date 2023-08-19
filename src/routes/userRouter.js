@@ -3,7 +3,10 @@ const router = express.Router();
 
 const controller = require("../controllers/userController");
 
-const { loginValidations, validateInput } = require("../middlewares/validator");
+const {
+  userValidationRules,
+  userValidate,
+} = require("../middlewares/userValidator");
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -19,8 +22,8 @@ router
   .post(
     "/",
     uploadFile.single("image"),
-    loginValidations,
-    validateInput,
+    userValidationRules,
+    userValidate,
     controller.store
   );
 

@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
 
-const loginValidations = [
+const userValidationRules = [
   body("email")
     .isEmail()
     .withMessage("Ingrese una dirección de correo electrónico válida"),
@@ -17,7 +17,7 @@ const loginValidations = [
     .withMessage("Debe elegir una contraseña más fuerte"),
 ];
 
-const validateInput = (req, res, next) => {
+const userValidate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     //return res.status(422).json({ errors: errors.array() });
@@ -31,4 +31,4 @@ const validateInput = (req, res, next) => {
   next();
 };
 
-module.exports = { loginValidations, validateInput };
+module.exports = { userValidationRules, userValidate };
